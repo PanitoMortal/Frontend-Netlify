@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<body>
+    
+    <mat-toolbar class="toolbar">
+   
+        <span>Pagina Principal de {{usuario}} </span> 
+        <span class="toolbar-item-spacer"></span>
+        <button mat-icon-button (click)="SubirReceta()" matTooltip="Subir receta">
+            <mat-icon>add_box</mat-icon>
+        </button>
+   
+        <button mat-icon-button matTooltip="My Account" [matMenuTriggerFor]="userAccountMenu">
+            <mat-icon ><img [src]="imagenRuta" alt="Avatar" /></mat-icon>        
+        </button>
+        <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below" class="icon">
+            <mat-divider class="icon"></mat-divider>
+            <button mat-menu-item routerLink="#" (click)="VerReceta()" class="icon">
+                <mat-icon>visibility</mat-icon>Ver mis recetas
+            </button>
+            <button mat-menu-item routerLink="#" (click)="logout()" class="icon">
+                <mat-icon>exit_to_app</mat-icon>Logout
+            </button>
+        </mat-menu>
+    </mat-toolbar>
+    
+    <mat-sidenav-container class="app-container">
+    
+   
+        <mat-sidenav-content class="main">
+            <router-outlet>
+                <div class="app-sidenav-content">
+                  <app-recetas-propias *ngIf="mostrarRecetasPropias"></app-recetas-propias>  
+                </div>
+            </router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+    
+
+
+
+    <div *ngFor="let receta of listRecipes" id="container">
+        <div class="recetas">
+            Uploaded by: {{receta.username}}
+            <h1> {{receta.name}}</h1><br>
+            <img src="http://localhost:8888/galeria/{{receta.img}}" width="400"><br>
+            <div class="summary" [innerHTML]="(receta.description)"></div>
+            <div class="ingredients">Ingredients: {{receta.ingredients}}</div>
+
+            <!-- <button mat-raised-button color="primary" (click)="goToRecipe(receta.id)">Ver Receta -></button> -->
+        </div>
+    </div>
+
+
+    
+
+    
+</body>
+</html>
