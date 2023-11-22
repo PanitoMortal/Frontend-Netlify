@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    endpoint: 'http://localhost:8888/'
+    endpoint: 'https://proyecto-13ys.onrender.com/'
   };
