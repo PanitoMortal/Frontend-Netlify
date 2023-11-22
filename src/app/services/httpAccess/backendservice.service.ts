@@ -6,7 +6,7 @@ import { login } from 'src/app/models/login';
 import { loginArr } from 'src/app/models/loginArr';
 
 
-const domain = "http://localhost:8888" 
+const domain = "https://proyecto-13ys.onrender.com" 
 const httpOptions = {headers: new HttpHeaders().set('Content-Type', 'application/json')};
 const headers =  {headers: new HttpHeaders().set('Content-Type', 'text/html').set('Accept', 'text/html')};
 
